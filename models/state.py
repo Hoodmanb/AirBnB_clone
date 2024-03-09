@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 '''a file containing a class State that inherits from basemodel'''
 
-from models.base_model.py import BaseModel
+from models.base_model import BaseModel
 
 
 class State(BaseModel):
