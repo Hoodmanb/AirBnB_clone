@@ -4,7 +4,6 @@
 
 import uuid
 from datetime import datetime
-from models import storage
 
 
 class BaseModel:
@@ -17,6 +16,8 @@ class BaseModel:
         -id
         -created_at
         -updated_at'''
+        from models import storage
+        self.storage = storage
 
         if kwargs is not None and kwargs != {}:
             for key in kwargs:
@@ -44,7 +45,7 @@ class BaseModel:
         updated_at with the current datetime'''
 
         self.updated_at = datetime.now()
-        storage.save()
+        self.storage.save()
 
     def to_dict(self):
         '''returns a dictionary containing all

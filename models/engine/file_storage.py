@@ -5,6 +5,12 @@ to a JSON file and deserializes JSON file to instances'''
 import json
 import os
 from models.base_model import BaseModel
+from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 
 
 class FileStorage:
@@ -24,10 +30,11 @@ class FileStorage:
 
     def save(self):
         """Serialize __objects to the JSON file __file_path."""
-        odict = FileStorage.__objects
-        objdict = {obj: odict[obj].to_dict() for obj in odict.keys()}
-        with open(FileStorage.__file_path, "w") as f:
-            json.dump(objdict, f)
+        serializable_objects = {k: v.to_dict(
+            ) for k, v in self.__class__.__objects.items(
+            ) if not isinstance(v, FileStorage)}
+        with open(self.__class__.__file_path, "w") as f:
+            json.dump(serializable_objects, f, default=lambda o: o.__dict__)
 
     def reload(self):
         """Deserialize the JSON file __file_path to __objects, if it exists."""
