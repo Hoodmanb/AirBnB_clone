@@ -14,7 +14,8 @@ from models.review import Review
 
 class HBNBCommand(cmd.Cmd):
     '''class defimition for my command line interpreter'''
-    valid_classes = ['BaseModel', 'User', 'State', 'City', 'Amenity', 'Place', 'Review']
+    valid_classes = ['BaseModel', 'User', 'State', 'City', 'Amenity',
+                     'Place', 'Review']
 
     prompt = "(hbnb) "
 
@@ -38,6 +39,7 @@ class HBNBCommand(cmd.Cmd):
             instance.save()
             print(instance.id)
         return
+
     def do_show(self, arg):
         '''Prints the string representation of an instance based
         on the class name and id'''
