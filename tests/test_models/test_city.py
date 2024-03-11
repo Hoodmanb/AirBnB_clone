@@ -9,6 +9,7 @@ Unittest classes:
 import unittest
 import os
 import sys
+import models
 from models.city import City
 
 sys.path.append(os.path.abspath('.'))

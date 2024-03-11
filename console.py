@@ -141,6 +141,10 @@ class HBNBCommand(cmd.Cmd):
             return False
         return True
 
+    def emptyline(self):
+        "print the prompt on a new line when enter is clicked without an arg"
+        pass
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
