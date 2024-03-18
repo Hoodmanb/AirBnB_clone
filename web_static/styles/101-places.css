@@ -1,0 +1,8 @@
+.places{
+  display: flex;
+  justify-content: space-between ;
+}
+article{
+  flex: 1 1 auto;
+}
+
